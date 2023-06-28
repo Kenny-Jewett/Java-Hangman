@@ -15,15 +15,23 @@ public class Main {
         System.out.println(Guess.guessesRemaining);
         System.out.println(word.getWordArray());
 
-        for(int i = 5; i > 0; i--) {
+
+
+        while(Guess.guessesRemaining > 0) {
             Guess.collectInput();
+            if (word.getWordArray().equals(word.getWordDisplayArray())) {
+                System.out.println("You won!");
+            } else if (Words.getCurrentWord().contains(Guess.getGuess())){
+                word.replaceLetter(word.getWordArray(), word.getWordDisplayArray(), Guess.getGuess());
+                System.out.println(word.getWordDisplayArray());
+            }else {
 
-            word.replaceLetter(word.getWordArray(), word.getWordDisplayArray(), Guess.getGuess());
-            System.out.println(word.getWordDisplayArray());
+                System.out.println("Wrong! You lose one life!");
+                Guess.decrementGuesses();
+                System.out.println("You have " + Guess.guessesRemaining + " guesses remaining.");
+            }
 
-//            if(Words.getCurrentWord().contains(Guess.getGuess())){
-//
-//            }
+
 
         }
 

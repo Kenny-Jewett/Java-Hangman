@@ -35,4 +35,10 @@ public class Guess {
         }
 
     }
+
+    public static void decrementGuesses() {
+        setGuessesRemaining(guessesRemaining - 1);
+    }
+
+
 }

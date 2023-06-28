@@ -2,7 +2,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Words {
+public class Words{
 
     private static String currentWord;
     private List<String> wordList = new ArrayList<>();
@@ -81,6 +81,7 @@ public class Words {
            if(wordArray.get(i).equals(guess)){
               replaced.set(i, guess);
            }
+
        }setWordDisplayArray(replaced);
     }
 
