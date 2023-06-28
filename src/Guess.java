@@ -5,6 +5,16 @@ public class Guess {
     public static String guess;
     public static int guessesRemaining = 5;
 
+    public static String getLettersGuessed() {
+        return lettersGuessed;
+    }
+
+    public static void setLettersGuessed(String lettersGuessed) {
+        Guess.lettersGuessed = lettersGuessed;
+    }
+
+    public static String lettersGuessed = "";
+
     public static void setGuess(String guess) {
         Guess.guess = guess;
     }
@@ -36,8 +46,19 @@ public class Guess {
 
     }
 
+    public static void restartGame() {
+        Scanner scanner = new Scanner((System.in));
+        System.out.println("Press any key to play again.");
+        scanner.nextLine();
+    }
+
     public static void decrementGuesses() {
         setGuessesRemaining(guessesRemaining - 1);
+    }
+
+    public static String displayLetters(String letter) {
+        setLettersGuessed(lettersGuessed.concat(letter));
+        return getLettersGuessed();
     }
 
 

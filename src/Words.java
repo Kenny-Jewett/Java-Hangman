@@ -99,4 +99,11 @@ public class Words{
         }
     }
 
+    public String convertArrayToString(ArrayList wordArray) {
+        String word = "";
+        for(int i = 0; i < wordArray.size(); i++) {
+            word = word.concat(wordArray.get(i).toString());
+        } return word;
+    }
+
 }
