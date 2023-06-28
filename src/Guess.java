@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 public class Guess {
 
-    public static String guess;
-    public static int guessesRemaining = 5;
+    private static String guess;
+    private static int guessesRemaining = 5;
 
     public static String getLettersGuessed() {
         return lettersGuessed;

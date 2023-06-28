@@ -18,8 +18,8 @@ public class Main {
 
 
 
-        while(Guess.guessesRemaining >= 0) {
-            hangman.displayHangman(Guess.guessesRemaining);
+        while(Guess.getGuessesRemaining() >= 0) {
+            hangman.displayHangman(Guess.getGuessesRemaining());
             word.convertArrayToString(word.getWordDisplayArray());
             System.out.println("Guess this word : " + word.convertArrayToString(word.getWordDisplayArray()));
             System.out.println("You've guessed: " + Guess.getLettersGuessed());
@@ -30,8 +30,8 @@ public class Main {
                 Main.main(args);
             } else if (Words.getCurrentWord().contains(Guess.getGuess())){
                 word.replaceLetter(word.getWordArray(), word.getWordDisplayArray(), Guess.getGuess());
-            } else if (Guess.guessesRemaining == 0) {
-                hangman.displayHangman(Guess.guessesRemaining);
+            } else if (Guess.getGuessesRemaining() == 0) {
+                hangman.displayHangman(Guess.getGuessesRemaining());
                 System.out.println("You've lost!");
                 Guess.restartGame();
                 Main.main(args);
@@ -39,7 +39,7 @@ public class Main {
                 Guess.displayLetters(Guess.getGuess());
                 System.out.println("Wrong! You lose one life!");
                 Guess.decrementGuesses();
-                System.out.println("You have " + Guess.guessesRemaining + " guesses remaining.");
+                System.out.println("You have " + Guess.getGuessesRemaining() + " guesses remaining.");
             }
 
 
