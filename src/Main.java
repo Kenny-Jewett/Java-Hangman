@@ -9,16 +9,19 @@ public class Main {
         Words word = new Words("");
         word.getRandomWord();
         word.splitWord(Words.getCurrentWord());
-        Hangman hangman = new Hangman("blank", "");
+        Hangman hangman = new Hangman("");
         word.hiddenWord(Words.getCurrentWord());
         word.hiddenWordArray(word.getWordDisplay());
         System.out.println(word.getWordArray());
+        Guess.setGuessesRemaining(5);
+        Guess.setLettersGuessed("");
 
 
 
-        while(Guess.guessesRemaining > 0) {
+        while(Guess.guessesRemaining >= 0) {
+            hangman.displayHangman(Guess.guessesRemaining);
             word.convertArrayToString(word.getWordDisplayArray());
-            System.out.println(word.convertArrayToString(word.getWordDisplayArray()));
+            System.out.println("Guess this word : " + word.convertArrayToString(word.getWordDisplayArray()));
             System.out.println("You've guessed: " + Guess.getLettersGuessed());
             Guess.collectInput();
             if (word.getWordArray().equals(word.getWordDisplayArray())) {
@@ -27,7 +30,12 @@ public class Main {
                 Main.main(args);
             } else if (Words.getCurrentWord().contains(Guess.getGuess())){
                 word.replaceLetter(word.getWordArray(), word.getWordDisplayArray(), Guess.getGuess());
-            }else {
+            } else if (Guess.guessesRemaining == 0) {
+                hangman.displayHangman(Guess.guessesRemaining);
+                System.out.println("You've lost!");
+                Guess.restartGame();
+                Main.main(args);
+            } else {
                 Guess.displayLetters(Guess.getGuess());
                 System.out.println("Wrong! You lose one life!");
                 Guess.decrementGuesses();
