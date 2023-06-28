@@ -2,7 +2,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Words{
+public class Words implements HandleStrings{
 
     private static String currentWord;
     private List<String> wordList = new ArrayList<>();
@@ -57,6 +57,7 @@ public class Words{
         this.currentWord = currentWord;
     }
 
+    @Override
     public String getRandomWord() {
         wordList.add("PICKLE");
         wordList.add("GARAGE");
@@ -66,7 +67,7 @@ public class Words{
         return currentWord;
 
     }
-
+    @Override
     public void splitWord(String word) {
         String[] splitWord = word.split("");
         for(int i = 0; i < word.length(); i++) {
@@ -74,7 +75,7 @@ public class Words{
         }
         setWordArray(wordArray);
     }
-
+    @Override
     public void replaceLetter(ArrayList wordArray, ArrayList wordDisplayArray, String guess) {
         ArrayList replaced = wordDisplayArray;
        for(int i = 0; i < wordArray.size(); i++) {
@@ -84,7 +85,7 @@ public class Words{
 
        }setWordDisplayArray(replaced);
     }
-
+    @Override
     public void hiddenWord(String word) {
         String dash = "";
         for (int i = 0; i < word.length(); i++) {
@@ -92,13 +93,14 @@ public class Words{
         } setWordDisplay(dash);
     }
 
+    @Override
     public void hiddenWordArray(String word) {
         String[] wordArray = word.split("");
         for(int i = 0; i < wordArray.length; i++) {
             wordDisplayArray.add(wordArray[i]);
         }
     }
-
+    @Override
     public String convertArrayToString(ArrayList wordArray) {
         String word = "";
         for(int i = 0; i < wordArray.size(); i++) {
